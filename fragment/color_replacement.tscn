@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7bhxrr8la171"]
+
+[ext_resource type="Shader" uid="uid://dg7o812mao72" path="res://fragment/color_replacement.tres" id="1_4mtui"]
+[ext_resource type="Script" uid="uid://dwijhlp6ubqmh" path="res://fragment/color_replacement_scene.gd" id="1_6n7u4"]
+[ext_resource type="Texture2D" uid="uid://dmdyhivf0ub5p" path="res://fragment/person.png" id="2_6n7u4"]
+[ext_resource type="Script" uid="uid://cqx5suihpprm2" path="res://fragment/color_replacement.gd" id="3_qxoy5"]
+[ext_resource type="Shader" uid="uid://nfjpwokfprq1" path="res://fragment/color_replacement.gdshader" id="5_qxoy5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yjb"]
+shader = ExtResource("1_4mtui")
+shader_parameter/replacement_color = Color(0.354383, 0.449478, 0.63776, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stkeq"]
+shader = ExtResource("5_qxoy5")
+shader_parameter/replacement_color = Color(0.187282, 0.38851, 0.404491, 1)
+
+[node name="ColorReplacement" type="Node2D"]
+script = ExtResource("1_6n7u4")
+
+[node name="Person" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b5yjb")
+position = Vector2(565, 430)
+texture = ExtResource("2_6n7u4")
+script = ExtResource("3_qxoy5")
+
+[node name="Person2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_stkeq")
+position = Vector2(870, 426)
+texture = ExtResource("2_6n7u4")
+script = ExtResource("3_qxoy5")
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+offset_left = 400.0
+offset_top = 24.0
+offset_right = 698.0
+offset_bottom = 290.0
+color = Color(0, 1, 0, 1)
+edit_alpha = false
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 58.0
+offset_bottom = 42.0
+text = "Back"
+
+[node name="Original" type="Label" parent="CanvasLayer"]
+offset_left = 151.0
+offset_top = 554.0
+offset_right = 299.0
+offset_bottom = 582.0
+text = "Original"
+horizontal_alignment = 1
+
+[node name="UsingVisualShader" type="Label" parent="CanvasLayer"]
+offset_left = 491.0
+offset_top = 554.0
+offset_right = 639.0
+offset_bottom = 582.0
+text = "Using VisualShader"
+
+[node name="UsingShadingLanguage" type="Label" parent="CanvasLayer"]
+offset_left = 781.0
+offset_top = 554.0
+offset_right = 958.0
+offset_bottom = 582.0
+text = "Using Shader language"
+
+[node name="Person3" type="Sprite2D" parent="."]
+position = Vector2(222, 443)
+texture = ExtResource("2_6n7u4")
+
+[connection signal="color_changed" from="ColorPicker" to="Person" method="_on_color_picker_color_changed"]
+[connection signal="color_changed" from="ColorPicker" to="Person2" method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

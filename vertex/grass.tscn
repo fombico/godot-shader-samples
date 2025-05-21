@@ -1,0 +1,168 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvdifxqd0233s"]
+
+[ext_resource type="Script" uid="uid://bqlb6pjefm7mx" path="res://vertex/grass_vertex_shader_scene.gd" id="1_j27j5"]
+[ext_resource type="Shader" uid="uid://b1paeld465v4s" path="res://vertex/grass.tres" id="1_nnvrw"]
+[ext_resource type="Texture2D" uid="uid://cpkutik8hgkux" path="res://vertex/grass.png" id="2_gvmkm"]
+[ext_resource type="Shader" uid="uid://ctomeqiuhhoeo" path="res://vertex/grass.gdshader" id="3_6ljfx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qk6x"]
+shader = ExtResource("3_6ljfx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mw2ei"]
+shader = ExtResource("1_nnvrw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw2ei"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.580392)
+
+[node name="GrassVertexShader" type="Node2D"]
+script = ExtResource("1_j27j5")
+
+[node name="Grass2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2qk6x")
+position = Vector2(871, 281)
+texture = ExtResource("2_gvmkm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 420.0
+offset_top = 259.0
+offset_right = 460.0
+offset_bottom = 299.0
+size_flags_vertical = 4
+
+[node name="Grass" type="Sprite2D" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_mw2ei")
+position = Vector2(20, 20)
+texture = ExtResource("2_gvmkm")
+
+[node name="GrassDimenLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = 139.0
+offset_right = 43.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "256 x 256"
+
+[node name="GrassCenter" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47, 13)
+text = "(0,0)"
+horizontal_alignment = 1
+
+[node name="GrassTopLeft" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -154.0
+offset_right = -90.0
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47, 13)
+text = "(-128, -128)"
+horizontal_alignment = 1
+
+[node name="GrassTopRight" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 82.0
+offset_top = -154.0
+offset_right = 162.0
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47, 13)
+text = "(-128, 128)"
+horizontal_alignment = 1
+
+[node name="GrassBottomLeft" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = 128.0
+offset_right = -98.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47, 13)
+text = "(-128, 128)"
+horizontal_alignment = 1
+
+[node name="GrassBottomRight" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = 128.0
+offset_right = 170.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(40, 10)
+text = "(128, 128)"
+horizontal_alignment = 1
+
+[node name="Border" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mw2ei")
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 55.0
+offset_bottom = 43.0
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

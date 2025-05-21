@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw65rjug4togp"]
+
+[ext_resource type="Script" uid="uid://c8ia5mk74icpc" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_ig7tw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -33.0
+offset_right = 71.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Vertex" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Vertex Shader - Swaying Grass"
+
+[node name="Fragment" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Fragment Shader - Change Color"
+
+[node name="WavyText" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Wavy Text"
+
+[connection signal="pressed" from="VBoxContainer/Vertex" to="." method="_on_vertex_pressed"]
+[connection signal="pressed" from="VBoxContainer/Fragment" to="." method="_on_fragment_pressed"]
+[connection signal="pressed" from="VBoxContainer/WavyText" to="." method="_on_wavy_text_pressed"]
