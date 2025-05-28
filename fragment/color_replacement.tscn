@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7bhxrr8la171"]
+[gd_scene load_steps=9 format=3 uid="uid://c7bhxrr8la171"]
 
 [ext_resource type="Shader" uid="uid://dg7o812mao72" path="res://fragment/color_replacement.tres" id="1_4mtui"]
 [ext_resource type="Script" uid="uid://dwijhlp6ubqmh" path="res://fragment/color_replacement_scene.gd" id="1_6n7u4"]
 [ext_resource type="Texture2D" uid="uid://dmdyhivf0ub5p" path="res://fragment/person.png" id="2_6n7u4"]
+[ext_resource type="Texture2D" uid="uid://bsg63mp4exobp" path="res://fragment/person1.png" id="3_b5yjb"]
 [ext_resource type="Script" uid="uid://cqx5suihpprm2" path="res://fragment/color_replacement.gd" id="3_qxoy5"]
 [ext_resource type="Shader" uid="uid://nfjpwokfprq1" path="res://fragment/color_replacement.gdshader" id="5_qxoy5"]
 
@@ -20,7 +21,7 @@ script = ExtResource("1_6n7u4")
 [node name="Person" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_b5yjb")
 position = Vector2(565, 430)
-texture = ExtResource("2_6n7u4")
+texture = ExtResource("3_b5yjb")
 script = ExtResource("3_qxoy5")
 
 [node name="Person2" type="Sprite2D" parent="."]
