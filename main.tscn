@@ -32,6 +32,36 @@ text = "Fragment Shader - Change Color"
 layout_mode = 2
 text = "Wavy Text"
 
+[node name="Blink" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Blink"
+
+[node name="CameraShake" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Camera Shake"
+
+[node name="HitParticle" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Hit Particle"
+
+[node name="Dissolve" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Dissolve"
+
+[node name="Scanline" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Scanline"
+
+[node name="Outline" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Outline"
+
 [connection signal="pressed" from="VBoxContainer/Vertex" to="." method="_on_vertex_pressed"]
 [connection signal="pressed" from="VBoxContainer/Fragment" to="." method="_on_fragment_pressed"]
 [connection signal="pressed" from="VBoxContainer/WavyText" to="." method="_on_wavy_text_pressed"]
+[connection signal="pressed" from="VBoxContainer/Blink" to="." method="_on_blink_pressed"]
+[connection signal="pressed" from="VBoxContainer/CameraShake" to="." method="_on_camera_shake_pressed"]
+[connection signal="pressed" from="VBoxContainer/HitParticle" to="." method="_on_hit_particle_pressed"]
+[connection signal="pressed" from="VBoxContainer/Dissolve" to="." method="_on_dissolve_pressed"]
+[connection signal="pressed" from="VBoxContainer/Scanline" to="." method="_on_scanline_pressed"]
+[connection signal="pressed" from="VBoxContainer/Outline" to="." method="_on_outline_pressed"]

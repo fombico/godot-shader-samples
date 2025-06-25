@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc2vl7lhrm66k"]
+
+[ext_resource type="Script" uid="uid://dkrbxpdx2eo7i" path="res://camera-shake/camera_shake.gd" id="1_f1kjy"]
+[ext_resource type="Texture2D" uid="uid://bsg63mp4exobp" path="res://fragment/person1.png" id="2_bsma4"]
+
+[node name="CameraShake" type="Node2D"]
+script = ExtResource("1_f1kjy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9, -6)
+texture = ExtResource("2_bsma4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 22.0
+offset_top = 35.0
+offset_right = 67.0
+offset_bottom = 66.0
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

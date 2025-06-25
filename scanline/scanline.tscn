@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c11y2y8kq454c"]
+
+[ext_resource type="Script" uid="uid://fjmpucqncbgu" path="res://scanline/scanline.gd" id="1_gqwpe"]
+[ext_resource type="Shader" uid="uid://dam8305hbf5vw" path="res://scanline/scanline.tres" id="2_34gq5"]
+[ext_resource type="Texture2D" uid="uid://bsg63mp4exobp" path="res://fragment/person1.png" id="2_u3m8q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjwj1"]
+shader = ExtResource("2_34gq5")
+
+[node name="Scanline" type="Node2D"]
+script = ExtResource("1_gqwpe")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 29.0
+offset_right = 61.0
+offset_bottom = 60.0
+text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fjwj1")
+position = Vector2(637, 324)
+texture = ExtResource("2_u3m8q")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

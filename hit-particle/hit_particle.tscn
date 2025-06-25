@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw0i0r3amjyai"]
+
+[ext_resource type="Script" uid="uid://dhaidil7kcf0l" path="res://hit-particle/hit_particle.gd" id="1_nl2pu"]
+[ext_resource type="Texture2D" uid="uid://bsg63mp4exobp" path="res://fragment/person1.png" id="2_p28k8"]
+
+[sub_resource type="Gradient" id="Gradient_t7ync"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ev365"]
+gradient = SubResource("Gradient_t7ync")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n1v8x"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 150.0
+direction = Vector3(0.5, -0.5, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 700, 0)
+damping_max = 500.0
+scale_min = 5.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_ev365")
+
+[node name="HitParticle" type="Node2D"]
+script = ExtResource("1_nl2pu")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 17.0
+offset_top = 13.0
+offset_right = 62.0
+offset_bottom = 44.0
+text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(624, 336)
+texture = ExtResource("2_p28k8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+position = Vector2(22, 1)
+amount = 40
+lifetime = 0.8
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_n1v8x")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

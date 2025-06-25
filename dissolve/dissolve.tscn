@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcmtdiq5sbcj6"]
+
+[ext_resource type="Script" uid="uid://bl4wmx610d4my" path="res://dissolve/dissolve.gd" id="1_yvgrp"]
+[ext_resource type="Shader" uid="uid://b70mqhdci0hky" path="res://dissolve/dissolve.tres" id="2_bgu7j"]
+[ext_resource type="Texture2D" uid="uid://bsg63mp4exobp" path="res://fragment/person1.png" id="3_wbs3v"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yvgrp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bgu7j"]
+noise = SubResource("FastNoiseLite_yvgrp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7104"]
+resource_local_to_scene = true
+shader = ExtResource("2_bgu7j")
+shader_parameter/Noise = SubResource("NoiseTexture2D_bgu7j")
+shader_parameter/DissolveValue = 1.0
+
+[node name="Dissolve" type="Node2D"]
+script = ExtResource("1_yvgrp")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 61.0
+offset_bottom = 50.0
+text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_i7104")
+position = Vector2(494, 346)
+texture = ExtResource("3_wbs3v")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
